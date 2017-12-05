@@ -104,7 +104,7 @@ public class cliente {
     
     public void RutCompleto( String rutCompleto)
     { 
-        rutCompleto = Integer.toString(rut) + "-" +dvRut;
+        rutCompleto = Integer.toString(rut)+dvRut;
     }
     
     
