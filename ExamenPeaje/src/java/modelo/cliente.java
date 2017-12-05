@@ -13,27 +13,47 @@ public class cliente {
     private int rut;
     private int dvRut;
     private String direccion;
-    private String comprado;
+    private String comprador;
+    private String nombreEmpresa;
 
     public cliente() {
     }
 
-    public cliente(int rut, int dvRut, String direccion, String comprado) {
+    public cliente(int rut, int dvRut, String direccion, String comprado,String nombreEmpresa) {
         this.rut = rut;
         this.dvRut = dvRut;
         this.direccion = direccion;
-        this.comprado = comprado;
+        this.comprador = comprado;
+        this.nombreEmpresa = nombreEmpresa;
     }
 
+    public String getComprador() {
+        return comprador;
+    }
+
+    public void setComprador(String comprador) {
+        this.comprador = comprador;
+    }
+
+    public String getNombreEmpresa() {
+        return nombreEmpresa;
+    }
+
+    public void setNombreEmpresa(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
+    }
+
+    
+    
     public String getComprado() {
-        return comprado;
+        return comprador;
     }
 
     public void setComprado(String comprado) throws Exception {
         if(comprado == null){
             throw new Exception("no se puede ingresar el dato vacio");
         }else{
-            this.comprado = comprado;
+            this.comprador = comprado;
         }
     }
 
@@ -77,7 +97,7 @@ public class cliente {
 
     @Override
     public String toString() {
-        return "cliente{" + "rut=" + rut + ", dvRut=" + dvRut + ", direccion=" + direccion + ", comprado=" + comprado + '}';
+        return "cliente{" + "rut=" + rut + ", dvRut=" + dvRut + ", direccion=" + direccion + ", comprado=" + comprador + '}';
     }
     
     
