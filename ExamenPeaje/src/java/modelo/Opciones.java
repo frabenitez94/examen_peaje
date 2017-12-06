@@ -45,12 +45,7 @@ public class Opciones {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Opciones{" + "opcionDePago=" + opcionDePago + ", opcionDeRetiro=" + opcionDeRetiro + '}';
-    }
 
-    
 }   
     
 
