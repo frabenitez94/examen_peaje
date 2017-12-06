@@ -12,15 +12,25 @@ package modelo;
 public class Carretera {
     private int idCarretera;
     private String nombreCarretera;
-    private int cantidadCarretera;
+    public int cantidadCarretera;
+    public int costoCarretera;
 
     public Carretera() {
     }
 
-    public Carretera(int idCarretera, String nombreCarretera, int cantidadCarretera) throws Exception {
+    public Carretera(int idCarretera, String nombreCarretera, int cantidadCarretera, int costoCarretera) throws Exception {
         this.idCarretera = idCarretera;
         this.nombreCarretera = nombreCarretera;
         setCantidadCarretera(cantidadCarretera);
+        this.costoCarretera = costoCarretera;
+    }
+
+    public int getCostoCarretera() {
+        return costoCarretera;
+    }
+
+    public void setCostoCarretera(int costoCarretera) {
+        this.costoCarretera = costoCarretera;
     }
 
     public int getIdCarretera() {
@@ -53,8 +63,6 @@ public class Carretera {
 
     @Override
     public String toString() {
-        return "Carretera{" + "idCarretera=" + idCarretera + ", nombreCarretera=" + nombreCarretera + ", cantidadCarretera=" + cantidadCarretera + '}';
-    }
-    
-    
+        return "Carretera{" + "idCarretera=" + idCarretera + ", nombreCarretera=" + nombreCarretera + ", cantidadCarretera=" + cantidadCarretera + ", costoCarretera=" + costoCarretera + '}';
+    }    
 }

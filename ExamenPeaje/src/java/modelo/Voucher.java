@@ -40,11 +40,8 @@ public class Voucher {
     }
 
     public void setTotalAPagar(int totalAPagar) throws Exception {
-        if(totalAPagar <= 0){
-            throw new Exception("el total no puede ser menor a 0");
-        }else{
-        this.totalAPagar = totalAPagar;
-        }
+        this.totalAPagar = carretera.getCostoCarretera() + carretera.getCantidadCarretera();
+        
     }
 
     public Carretera getCarretera() {
