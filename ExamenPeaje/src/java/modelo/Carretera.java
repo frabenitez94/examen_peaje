@@ -17,7 +17,7 @@ public class Carretera {
     public Carretera() {
     }
 
-    public Carretera(int idCarretera, String nombreCarretera, int cantidadCarretera) {
+    public Carretera(int idCarretera, String nombreCarretera, int cantidadCarretera) throws Exception {
         this.idCarretera = idCarretera;
         this.nombreCarretera = nombreCarretera;
         setCantidadCarretera(cantidadCarretera);
