@@ -9,50 +9,51 @@ package modelo;
  *
  * @author Reveco
  */
-public class cliente {
+public class EmpresaCliente {
     private int rut;
     private int dvRut;
     private String direccion;
-    private String comprador;
+    private String comprado;
     private String nombreEmpresa;
 
-    public cliente() {
+    public EmpresaCliente() {
     }
 
-    public cliente(int rut, int dvRut, String direccion, String comprado,String nombreEmpresa) throws Exception {
-        setRut(rut) ;
-        setDvRut(dvRut);
-        setDireccion(direccion);
-        setComprador(comprador);
-        setNombreEmpresa(nombreEmpresa);
+    public EmpresaCliente(int rut, int dvRut, String direccion, String comprado, String nombreEmpresa) {
+        this.rut = rut;
+        this.dvRut = dvRut;
+        this.direccion = direccion;
+        this.comprado = comprado;
     }
-
-    public String getComprador() {
-        return comprador;
-    }
-
-    public void setComprador(String comprador) throws Exception {
-        if(comprador == null){
-            throw new Exception("no se puede ingresar el dato vacio");
-        }else{
-            this.comprador = comprador;
-        }
-        this.comprador = comprador;
-    }
-
-    public String getNombreEmpresa() {
+    
+        public String getNombreEmpresa() {
         return nombreEmpresa;
     }
 
     public void setNombreEmpresa(String nombreEmpresa) throws Exception {
-        if(nombreEmpresa == null){
-            throw  new Exception("no se puede dejar vacio ");
+        if(comprado == null){
+            throw new Exception("no se puede ingresar el dato vacio");
         }else{
-        this.nombreEmpresa = nombreEmpresa;
+            this.nombreEmpresa = nombreEmpresa;
+        }
+        
+    }
+
+    public String getComprado() {
+        return comprado;
+    }
+
+    public void setComprado(String comprado) throws Exception {
+        if(comprado == null){
+            throw new Exception("no se puede ingresar el dato vacio");
+        }else{
+            this.comprado = comprado;
         }
     }
 
+
     public int getRut() {
+        
         return rut;
     }
 
@@ -90,17 +91,16 @@ public class cliente {
 
     @Override
     public String toString() {
-        return "cliente{" + "rut=" + rut + ", dvRut=" + dvRut + ", direccion=" + direccion + ", comprado=" + comprador + '}';
+        return "cliente{" + "rut=" + rut + ", dvRut=" + dvRut + ", direccion=" + direccion + ", comprado=" + comprado + '}';
     }
     
     
     
     public void RutCompleto( String rutCompleto)
     { 
-        rutCompleto = Integer.toString(rut)+dvRut;
+        rutCompleto = Integer.toString(rut) + "-" +dvRut;
     }
-    
-    
-  
 
+
+    
 }
