@@ -94,13 +94,8 @@ public class EmpresaCliente {
         return "cliente{" + "rut=" + rut + ", dvRut=" + dvRut + ", direccion=" + direccion + ", comprado=" + comprado + '}';
     }
     
-    
-    
     public void RutCompleto( String rutCompleto)
     { 
         rutCompleto = Integer.toString(rut) + "-" +dvRut;
-    }
-
-
-    
+    }    
 }
