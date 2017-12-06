@@ -19,19 +19,24 @@ public class cliente {
     public cliente() {
     }
 
-    public cliente(int rut, int dvRut, String direccion, String comprado,String nombreEmpresa) {
-        this.rut = rut;
-        this.dvRut = dvRut;
-        this.direccion = direccion;
-        this.comprador = comprado;
-        this.nombreEmpresa = nombreEmpresa;
+    public cliente(int rut, int dvRut, String direccion, String comprado,String nombreEmpresa) throws Exception {
+        setRut(rut) ;
+        setDvRut(dvRut);
+        setDireccion(direccion);
+        setComprador(comprador);
+        setNombreEmpresa(nombreEmpresa);
     }
 
     public String getComprador() {
         return comprador;
     }
 
-    public void setComprador(String comprador) {
+    public void setComprador(String comprador) throws Exception {
+        if(comprador == null){
+            throw new Exception("no se puede ingresar el dato vacio");
+        }else{
+            this.comprador = comprador;
+        }
         this.comprador = comprador;
     }
 
@@ -39,27 +44,15 @@ public class cliente {
         return nombreEmpresa;
     }
 
-    public void setNombreEmpresa(String nombreEmpresa) {
-        this.nombreEmpresa = nombreEmpresa;
-    }
-
-    
-    
-    public String getComprado() {
-        return comprador;
-    }
-
-    public void setComprado(String comprado) throws Exception {
-        if(comprado == null){
-            throw new Exception("no se puede ingresar el dato vacio");
+    public void setNombreEmpresa(String nombreEmpresa) throws Exception {
+        if(nombreEmpresa == null){
+            throw  new Exception("no se puede dejar vacio ");
         }else{
-            this.comprador = comprado;
+        this.nombreEmpresa = nombreEmpresa;
         }
     }
 
-
     public int getRut() {
-        
         return rut;
     }
 
