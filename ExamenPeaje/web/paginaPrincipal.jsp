@@ -22,46 +22,47 @@
     </head>
     <body>
         
-        
-            <form action="SIngresoEmpresa" name="formularioIngreso">
-                <div class="page-header">
-                    <h4>Datos Empresa</h4>  
-                </div>
-                <div class="container">
+            <div class="container">
+                <form action="SIngresoEmpresa" name="formularioIngreso">
                     <div class="row">
                         <div class="col-sm">
-                            <input type="text" name="rut" placeholder="RUT" maxlength="9" required>
-                            <input type="text" name="nombre" placeholder="NOMBRE">
-                            <input type="text" name="direccion" placeholder="DIRECCION">
-                            <input type="text" name="compradoPor" placeholder="COMPRADO POR">
+                            <div class="page-header">
+                                <h3>Datos Empresa</h3><br>  
+                            </div>
+                            <input type="text" name="rut" placeholder="RUT" maxlength="9" required class="form-control">
+                            <input type="text" name="nombre" placeholder="NOMBRE" class="form-control">
+                            <input type="text" name="direccion" placeholder="DIRECCION" class="form-control">
+                            <input type="text" name="compradoPor" placeholder="COMPRADO POR" class="form-control">
                         </div>
                         <div class="col-sm">
+                            <div class="page-header">
+                                <h3>Tipos de pago</h3>  
+                            </div>
                             <input type="radio" name="optPago" value="Transferencia" checked> Transferencia<br>
                             <input type="radio" name="optPago" value="Pago en linea"> Pago en linea<br>
                             <input type="radio" name="optPago" value="Orden de compra"> Orden de comprea<br>
                         </div>
                         <div class="col-sm">
+                            <div class="page-header">
+                                <h3>Tipo Retiro</h3><br>  
+                            </div>
                             <input type="radio" name="optRetiro" value="Oficina" checked> Oficina<br>
-                            <input type="radio" name="optRetiro" value="Envio Cliente"> Envio Cliente
+                            <input type="radio" name="optRetiro" value="Envio Cliente" > Envio Cliente
                          </div>
-
-                        
                     </div>
-                </div>
                 <table class="table table-striped table-dark">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">Carretera</th>
                         <th scope="col">Cantidad</th>
-                        <th scope="col">    </th>
                       </tr>
                     </thead>
                     <tbody>
                         <tr>
                           <th scope="row">1</th>
                           <td>Ruta 68</td>
-                          <td><input type="text" name="cantidadRuta68"></td></td>
+                          <td><input type="text" name="cantidadRuta68" ></td></td>
                         </tr>
                         <tr>
                           <th scope="row">2</th>
@@ -71,7 +72,7 @@
                         <tr>
                           <th scope="row">3</th>
                           <td>Ruta Guardia Vieja</td>
-                          <td><input type="text" name="cantidadRutaGuardiaVieja"></td>
+                          <td><input type="text" name="cantidadRutaGuardiaVieja" ></td>
                         </tr>
                         <tr>
                           <th scope="row">4</th>
@@ -80,15 +81,15 @@
                         </tr>
                     </tbody>
                 </table>
+                        <div class="col-sm">
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Hacer pedido</button>
+                        </div>
+                
+                </form> 
+            </div>
                 
             
-                
-                <div class="col-sm">
-                            <input type="submit" value="Enviar">
-                </div>
-                
-            </form> 
-        
+            
         
         
         
