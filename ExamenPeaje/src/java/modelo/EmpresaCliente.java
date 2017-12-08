@@ -11,7 +11,6 @@ package modelo;
  */
 public class EmpresaCliente {
     private int rut;
-    private int dvRut;
     private String direccion;
     private String comprador;
     private String nombreEmpresa;
@@ -19,9 +18,8 @@ public class EmpresaCliente {
     public EmpresaCliente() {
     }
 
-    public EmpresaCliente(int rut, int dvRut, String direccion, String comprador, String nombreEmpresa) throws Exception {
+    public EmpresaCliente(int rut, String direccion, String comprador, String nombreEmpresa) throws Exception {
         setRut(rut);
-        setDvRut(dvRut);
         setDireccion(direccion);
         setComprador(comprador);
         setNombreEmpresa(nombreEmpresa);
@@ -59,22 +57,10 @@ public class EmpresaCliente {
     }
 
     public void setRut(int rut) throws Exception {
-        if(rut > 0 && rut < 99999999 ){
+        if(rut > 0 && rut < 999999999 ){
         this.rut = rut;
         }else{
-           throw new Exception("no puedes ingresar un dato menor a 0 ni un dato mayor a los 8 digitos");
-        }
-    }
-
-    public int getDvRut() {
-        return dvRut;
-    }
-
-    public void setDvRut(int dvRut) throws Exception {
-        if(dvRut < 0 && dvRut >9){
-        this.dvRut = dvRut;
-        }else{
-            throw new Exception("solo ingrese su dv de 1 a 9 si su dv termina en k remplazala por un 1");
+           throw new Exception("no puedes ingresar un dato menor a 0 ni un dato mayor a los los 9 digitos y si termina en k remplacelo por un 1");
         }
     }
 
@@ -92,11 +78,6 @@ public class EmpresaCliente {
 
     @Override
     public String toString() {
-        return "cliente{" + "rut=" + rut + ", dvRut=" + dvRut + ", direccion=" + direccion + ", comprado=" + comprador + '}';
+        return "EmpresaCliente{" + "rut=" + rut + ", direccion=" + direccion + ", comprador=" + comprador + ", nombreEmpresa=" + nombreEmpresa + '}';
     }
-    
-    public void RutCompleto( String rutCompleto)
-    { 
-        rutCompleto = Integer.toString(rut) + "-" +dvRut;
-    }    
 }
