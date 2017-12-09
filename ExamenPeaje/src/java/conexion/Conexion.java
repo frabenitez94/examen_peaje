@@ -17,7 +17,7 @@ public class Conexion {
         
     public Conexion(){
         String driver ="com.mysql.jdbc.Driver";
-        String url ="jdbc:mysql://localhost:3306/perufrank";
+        String url ="jdbc:mysql://localhost:3306/peaje";
         String usu ="root";
         String pass ="";
         

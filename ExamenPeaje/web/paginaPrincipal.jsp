@@ -32,15 +32,15 @@
                             <input type="text" name="rut" placeholder="RUT" maxlength="9" required class="form-control">
                             <input type="text" name="nombre" placeholder="NOMBRE" class="form-control">
                             <input type="text" name="direccion" placeholder="DIRECCION" class="form-control">
-                            <input type="text" name="compradoPor" placeholder="COMPRADO POR" class="form-control">
+                            <input type="text" name="comprador" placeholder="COMPRADO POR" class="form-control">
                         </div>
                         <div class="col-sm">
                             <div class="page-header">
                                 <h3>Tipos de pago</h3>  
                             </div>
-                            <input type="radio" name="optPago" value="Transferencia" checked> Transferencia<br>
-                            <input type="radio" name="optPago" value="Pago en linea"> Pago en linea<br>
-                            <input type="radio" name="optPago" value="Orden de compra"> Orden de comprea<br>
+                            <input type="radio" name="optPago" value="1" checked> Transferencia<br>
+                            <input type="radio" name="optPago" value="2"> Pago en linea<br>
+                            <input type="radio" name="optPago" value="3"> Orden de comprea<br>
                         </div>
                         <div class="col-sm">
                             <div class="page-header">

@@ -18,11 +18,9 @@ public class Carretera {
     public Carretera() {
     }
 
-    public Carretera(int idCarretera, String nombreCarretera, int cantidadCarretera, int costoCarretera) throws Exception {
+    public Carretera(int idCarretera, int cantidadCarretera) throws Exception {
         this.idCarretera = idCarretera;
-        this.nombreCarretera = nombreCarretera;
         setCantidadCarretera(cantidadCarretera);
-        this.costoCarretera = costoCarretera;
     }
 
     public int getCostoCarretera() {
@@ -54,8 +52,8 @@ public class Carretera {
     }
 
     public void setCantidadCarretera(int cantidadCarretera) throws Exception {
-        if(cantidadCarretera <= 0){
-            throw new Exception("no puede ser menor a uno");
+        if(cantidadCarretera < 0){
+            throw new Exception("no puede ser menor a cero");
         }else{
             this.cantidadCarretera = cantidadCarretera;
         }
