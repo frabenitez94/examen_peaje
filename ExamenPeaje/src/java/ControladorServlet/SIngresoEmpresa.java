@@ -15,6 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.Carretera;
 import modelo.EmpresaCliente;
 import modelo.Opciones;
+import modelo.Pedido;
+import DAO.CarreteraDAO;
+import java.util.ArrayList;
+import modelo.Voucher;
 
 
 /**
@@ -36,10 +40,15 @@ public class SIngresoEmpresa extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        // traer objetos base datos
+        ArrayList<Carretera> lCarretera = new ArrayList();
+        CarreteraDAO c1DAO = new CarreteraDAO();
+        lCarretera = c1DAO.ReadALl();
         
         
         
-        //variables.
+        //variables y obj.
+        Voucher voucher = new Voucher();
         int rut_login = 0;
         String nombre_login = null;
         String direccion_login = null;
@@ -72,12 +81,10 @@ public class SIngresoEmpresa extends HttpServlet {
         // Modelo try, validaciones.. 
         try {
             EmpresaCliente empresaCliente = new EmpresaCliente(rut_login, direccion_login, comprador_login, nombre_login);
+            Pedido pedido = new Pedido(empresaCliente, opt_retiro, opt_pago, c_ruta68, c_rutaSol, c_troncalSur, c_rutaGuardaVieja);
             
-            Carretera ruta68 = new Carretera(1,c_ruta68);
-            Carretera rutaSol = new Carretera(1,c_rutaSol);
-            Carretera rutaGuardaVieja = new Carretera(1,c_rutaGuardaVieja);
-            Carretera troncalSur = new Carretera(4, c_troncalSur);
-            
+            voucher.setPedido(pedido);
+            voucher.calculaTotal();
             
             
         } catch (Exception e) {

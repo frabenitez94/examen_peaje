@@ -5,59 +5,34 @@
  */
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Reveco
  */
 public class Voucher {
-    private int numeroPedido;
-    private int totalAPagar;
-    private Carretera carretera;
+    private Pedido pedido;
+    private int total;
 
     public Voucher() {
     }
-    
-    public Voucher(int numeroPedido, int totalAPagar, Carretera carretera) {
-        this.numeroPedido = numeroPedido;
-        this.totalAPagar = totalAPagar;
-        this.carretera = carretera;
+
+    public Pedido getPedido() {
+        return pedido;
     }
 
-    public int getNumeroPedido() {
-        return numeroPedido;
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 
-    public void setNumeroPedido(int numeroPedido) throws Exception {
-        if(numeroPedido <= 0){
-            throw new Exception("no puede ser menor a 0");
-        }else{
-        this.numeroPedido = numeroPedido;
-        }
-    }
-
-    public int getTotalAPagar() {
-        return totalAPagar;
-    }
-
-    public void setTotalAPagar(int totalAPagar) throws Exception {
-        this.totalAPagar = carretera.getCostoCarretera() + carretera.getCantidadCarretera();
+    public void calculaTotal(int valorRuta68, int valorTroncalSur, int valorSol, int valorGuardaVieja){
+        int c1,c2,c3,c4;
+        c1 = pedido.getcGuardaVieja();
+        c2 = pedido.getcRuta68();
+        c3 = pedido.getcTroncalSur();
+        c4 = pedido.getcRutaSol();
         
+        total = (valorGuardaVieja*c1+valorRuta68*c2+valorTroncalSur*c3+valorSol*c4);
     }
-
-    public Carretera getCarretera() {
-        return carretera;
-    }
-
-    public void setCarretera(Carretera carretera) {
-        this.carretera = carretera;
-    }
-
-    @Override
-    public String toString() {
-        return "Voucher{" + "numeroPedido=" + numeroPedido + ", totalAPagar=" + totalAPagar + ", carretera=" + carretera + '}';
-    }
-
-    
-    
-    
 }

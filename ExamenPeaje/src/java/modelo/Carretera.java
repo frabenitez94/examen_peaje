@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo;
 
 /**
@@ -12,16 +8,19 @@ package modelo;
 public class Carretera {
     private int idCarretera;
     private String nombreCarretera;
-    public int cantidadCarretera;
-    public int costoCarretera;
+    private int costoCarretera;
 
-    public Carretera() {
+    
+    public Carretera(){
     }
 
-    public Carretera(int idCarretera, int cantidadCarretera) throws Exception {
-        this.idCarretera = idCarretera;
-        setCantidadCarretera(cantidadCarretera);
+    public Carretera(int idCarretera, String nombreCarretera, int costoCarretera) {
+        setIdCarretera(idCarretera);
+        setNombreCarretera(nombreCarretera);
+        setCostoCarretera(costoCarretera);
     }
+    
+    
 
     public int getCostoCarretera() {
         return costoCarretera;
@@ -47,10 +46,8 @@ public class Carretera {
         this.nombreCarretera = nombreCarretera;
     }
 
-    public int getCantidadCarretera() {
-        return cantidadCarretera;
-    }
 
+/*
     public void setCantidadCarretera(int cantidadCarretera) throws Exception {
         if(cantidadCarretera < 0){
             throw new Exception("no puede ser menor a cero");
@@ -58,9 +55,11 @@ public class Carretera {
             this.cantidadCarretera = cantidadCarretera;
         }
     }
+*/
 
     @Override
     public String toString() {
-        return "Carretera{" + "idCarretera=" + idCarretera + ", nombreCarretera=" + nombreCarretera + ", cantidadCarretera=" + cantidadCarretera + ", costoCarretera=" + costoCarretera + '}';
-    }    
+        return "Carretera{" + "idCarretera=" + idCarretera + ", nombreCarretera=" + nombreCarretera + ", costoCarretera=" + costoCarretera + '}';
+    }
+   
 }
