@@ -16,7 +16,7 @@ public class Conexion {
     private Connection cnn;
         
     public Conexion(){
-        String driver ="com.mysql.jdbc.Driver";
+        String driver = "com.mysql.jdbc.Driver";
         String url ="jdbc:mysql://localhost:3306/peaje";
         String usu ="root";
         String pass ="";

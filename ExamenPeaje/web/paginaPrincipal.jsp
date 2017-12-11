@@ -40,14 +40,14 @@
                             </div>
                             <input type="radio" name="optPago" value="1" checked> Transferencia<br>
                             <input type="radio" name="optPago" value="2"> Pago en linea<br>
-                            <input type="radio" name="optPago" value="3"> Orden de comprea<br>
+                            <input type="radio" name="optPago" value="3"> Orden de compra<br>
                         </div>
                         <div class="col-sm">
                             <div class="page-header">
                                 <h3>Tipo Retiro</h3><br>  
                             </div>
-                            <input type="radio" name="optRetiro" value="Oficina" checked> Oficina<br>
-                            <input type="radio" name="optRetiro" value="Envio Cliente" > Envio Cliente
+                            <input type="radio" name="optRetiro" value="1" checked> Oficina<br>
+                            <input type="radio" name="optRetiro" value="2" > Envio Cliente
                          </div>
                     </div>
                 <table class="table table-striped table-dark">

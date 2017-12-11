@@ -16,8 +16,8 @@ public class PedidoDAO implements IPedido{
     
     PreparedStatement ps;
     
-    private static final String SQL_INSERT = "insert into pedido (total,rutEmpresa,idTipoPago,idTipoRetiro)"
-                                        + " value(?,?,?,?)";
+    private static final String SQL_INSERT = "INSERT INTO pedido (total,rutEmpresa,idTipoPago,idTipoRetiro)"
+                                        + " VALUES(?,?,?,?)";
     private static final String SQL_DELETE = "delete from pedido where idPedido = ?";
     private static final String SQL_READALL = "select *from pedido where rut=?";
     

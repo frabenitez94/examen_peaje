@@ -97,6 +97,7 @@ public class SIngresoEmpresa extends HttpServlet {
             pedido.calculaTotal(Ruta68.getCostoCarretera(), TroncalSur.getCostoCarretera(), RutaSol.getCostoCarretera(), GuardaVieja.getCostoCarretera());
             
             empresaDAO.Insert(empresaCliente);
+            
             pedidoDAO.Insertar(pedido);
             
             request.getRequestDispatcher("exito.jsp").forward(request, response);
