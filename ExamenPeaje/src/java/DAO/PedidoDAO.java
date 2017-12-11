@@ -28,7 +28,7 @@ public class PedidoDAO implements IPedido{
         
             ps = con.getCnn().prepareStatement(SQL_INSERT);
             
-            ps.setInt(2, pedido.);
+            ps.setInt(2, pedido.get);
             
             
         } catch (Exception ex) {

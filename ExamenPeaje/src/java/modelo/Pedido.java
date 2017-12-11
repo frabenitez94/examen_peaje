@@ -11,11 +11,11 @@ public class Pedido {
     private EmpresaCliente empresa;
     private int tipoRetiro;
     private int tipoPago;
-    private int idpc;
     private int cRutaSol;
     private int cRuta68;
     private int cTroncalSur;
     private int cGuardaVieja;
+    private int total;
 
     public Pedido(EmpresaCliente empresa, int tipoRetiro, int tipoPago
             ,int cRuta68 ,int cRutaSol ,int cTroncalSur, int cGuardaVieja) {
@@ -60,14 +60,6 @@ public class Pedido {
         this.tipoPago = tipoPago;
     }
 
-    public int getIdpc() {
-        return idpc;
-    }
-
-    public void setIdpc(int idpc) {
-        this.idpc = idpc;
-    }
-
     public EmpresaCliente getEmpresa() {
         return empresa;
     }
@@ -107,7 +99,24 @@ public class Pedido {
     public void setcGuardaVieja(int cGuardaVieja) {
         this.cGuardaVieja = cGuardaVieja;
     }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
     
-    
+    public void calculaTotal(int valorRuta68, int valorTroncalSur, int valorSol, int valorGuardaVieja){
+        int c1,c2,c3,c4;
+        c1 = cGuardaVieja;
+        c2 = cRuta68;
+        c3 = cTroncalSur;
+        c4 = cRutaSol;
+        
+        total = (valorGuardaVieja*c1+valorRuta68*c2+valorTroncalSur*c3+valorSol*c4);
+        
+    }
     
 }

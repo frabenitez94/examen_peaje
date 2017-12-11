@@ -40,27 +40,34 @@ public class SIngresoEmpresa extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        // traer objetos base datos
-        ArrayList<Carretera> lCarretera = new ArrayList();
-        CarreteraDAO c1DAO = new CarreteraDAO();
-        lCarretera = c1DAO.ReadALl();
-        
-        
-        
         //variables y obj.
         Voucher voucher = new Voucher();
         int rut_login = 0;
         String nombre_login = null;
         String direccion_login = null;
         String comprador_login = null;
-        
         int opt_pago = 0;
         int opt_retiro = 0;
-        
         int c_ruta68 = 0;
         int c_rutaSol = 0;
         int c_rutaGuardaVieja = 0;
         int c_troncalSur = 0;
+
+        CarreteraDAO c1DAO = new CarreteraDAO();
+        Carretera Ruta68 = new Carretera();
+        Carretera GuardaVieja = new Carretera();
+        Carretera RutaSol = new Carretera();
+        Carretera TroncalSur = new Carretera();
+        
+
+        // traer objetos base datos
+        Ruta68 = c1DAO.read(1);
+        GuardaVieja = c1DAO.read(2);
+        TroncalSur = c1DAO.read(3);
+        RutaSol = c1DAO.read(4);
+        
+        
+        
         
         // Extraccion de datos. 
         
@@ -82,12 +89,12 @@ public class SIngresoEmpresa extends HttpServlet {
         try {
             EmpresaCliente empresaCliente = new EmpresaCliente(rut_login, direccion_login, comprador_login, nombre_login);
             Pedido pedido = new Pedido(empresaCliente, opt_retiro, opt_pago, c_ruta68, c_rutaSol, c_troncalSur, c_rutaGuardaVieja);
-            
-            voucher.setPedido(pedido);
-            voucher.calculaTotal();
+            pedido.calculaTotal(Ruta68.getCostoCarretera(), TroncalSur.getCostoCarretera(), RutaSol.getCostoCarretera(), GuardaVieja.getCostoCarretera());
             
             
-        } catch (Exception e) {
+            
+        } catch (Exception ex) {
+            
         }
         
         
