@@ -17,6 +17,8 @@ import modelo.EmpresaCliente;
 import modelo.Opciones;
 import modelo.Pedido;
 import DAO.CarreteraDAO;
+import DAO.EmpresaDAO;
+import DAO.PedidoDAO;
 import java.util.ArrayList;
 import modelo.Voucher;
 
@@ -41,24 +43,27 @@ public class SIngresoEmpresa extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         //variables y obj.
+        
+        
+        int rut_login;
+        String nombre_login;
+        String direccion_login;
+        String comprador_login;
+        int opt_pago;
+        int opt_retiro;
+        int c_ruta68;
+        int c_rutaSol;
+        int c_rutaGuardaVieja;
+        int c_troncalSur;
+        
         Voucher voucher = new Voucher();
-        int rut_login = 0;
-        String nombre_login = null;
-        String direccion_login = null;
-        String comprador_login = null;
-        int opt_pago = 0;
-        int opt_retiro = 0;
-        int c_ruta68 = 0;
-        int c_rutaSol = 0;
-        int c_rutaGuardaVieja = 0;
-        int c_troncalSur = 0;
-
         CarreteraDAO c1DAO = new CarreteraDAO();
         Carretera Ruta68 = new Carretera();
         Carretera GuardaVieja = new Carretera();
         Carretera RutaSol = new Carretera();
         Carretera TroncalSur = new Carretera();
-        
+        EmpresaDAO empresaDAO = new EmpresaDAO();
+        PedidoDAO pedidoDAO = new PedidoDAO();
 
         // traer objetos base datos
         Ruta68 = c1DAO.read(1);
@@ -91,10 +96,14 @@ public class SIngresoEmpresa extends HttpServlet {
             Pedido pedido = new Pedido(empresaCliente, opt_retiro, opt_pago, c_ruta68, c_rutaSol, c_troncalSur, c_rutaGuardaVieja);
             pedido.calculaTotal(Ruta68.getCostoCarretera(), TroncalSur.getCostoCarretera(), RutaSol.getCostoCarretera(), GuardaVieja.getCostoCarretera());
             
+            empresaDAO.Insert(empresaCliente);
+            pedidoDAO.Insertar(pedido);
             
+            request.getRequestDispatcher("exito.jsp").forward(request, response);
             
         } catch (Exception ex) {
-            
+            ex.getMessage();
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
         
         

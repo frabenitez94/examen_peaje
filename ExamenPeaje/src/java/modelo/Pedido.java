@@ -19,13 +19,14 @@ public class Pedido {
 
     public Pedido(EmpresaCliente empresa, int tipoRetiro, int tipoPago
             ,int cRuta68 ,int cRutaSol ,int cTroncalSur, int cGuardaVieja) {
-        setRutEmpresa(empresa);
         setTipoPago(tipoPago);
         setTipoRetiro(tipoRetiro);
         setcRuta68(cRuta68);
         setcRutaSol(cRutaSol);
         setcTroncalSur(cTroncalSur);
         setcGuardaVieja(cGuardaVieja);
+        setTotal(total);
+        setEmpresa(empresa);
     }
 
     public int getId() {
@@ -36,14 +37,7 @@ public class Pedido {
         this.id = id;
     }
 
-    public EmpresaCliente getRutEmpresa() {
-        return empresa;
-    }
-
-    public void setRutEmpresa(EmpresaCliente empresa) {
-        this.empresa = empresa;
-    }
-
+   
     public int getTipoRetiro() {
         return tipoRetiro;
     }

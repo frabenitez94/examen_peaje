@@ -3,7 +3,9 @@ package DAO;
 
 import conexion.Conexion;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import modelo.Pedido;
 
 /**
@@ -14,7 +16,8 @@ public class PedidoDAO implements IPedido{
     
     PreparedStatement ps;
     
-    private static final String SQL_INSERT = "insert into pedido () value()";
+    private static final String SQL_INSERT = "insert into pedido (total,rutEmpresa,idTipoPago,idTipoRetiro)"
+                                        + " value(?,?,?,?)";
     private static final String SQL_DELETE = "delete from pedido where idPedido = ?";
     private static final String SQL_READALL = "select *from pedido where rut=?";
     
@@ -22,20 +25,22 @@ public class PedidoDAO implements IPedido{
     private static final Conexion con = Conexion.getInstance();
 
     @Override
-    public boolean Insertar(Pedido pedido) {
-        
+    public int Insertar(Pedido pedido) {
+        int aux = 0;
         try {
-        
             ps = con.getCnn().prepareStatement(SQL_INSERT);
             
-            ps.setInt(2, pedido.get);
+            ps.setInt(1, pedido.getTotal());
+            ps.setInt(2, pedido.getEmpresa().getRut());
+            ps.setInt(3, pedido.getTipoPago());
+            ps.setInt(4, pedido.getTipoRetiro());
             
+            aux = ps.executeUpdate();
             
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
-        
-        
-        return true;
+        return aux;
     }
 
     @Override

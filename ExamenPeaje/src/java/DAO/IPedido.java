@@ -14,7 +14,7 @@ import modelo.Pedido;
  */
 public interface IPedido {
  
-    public boolean Insertar(Pedido pedido);
+    public int Insertar(Pedido pedido);
     
     public boolean Eliminar(int idPedido); 
     
