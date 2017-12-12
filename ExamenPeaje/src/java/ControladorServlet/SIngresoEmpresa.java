@@ -43,8 +43,7 @@ public class SIngresoEmpresa extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         //variables y obj.
-        
-        
+        ArrayList<EmpresaCliente> compruebaEmpresa = new ArrayList<>();
         int rut_login;
         String nombre_login;
         String direccion_login;
@@ -66,10 +65,12 @@ public class SIngresoEmpresa extends HttpServlet {
         PedidoDAO pedidoDAO = new PedidoDAO();
 
         // traer objetos base datos
+        
+        compruebaEmpresa = empresaDAO.ReadAll();
         Ruta68 = c1DAO.read(1);
-        GuardaVieja = c1DAO.read(2);
-        TroncalSur = c1DAO.read(3);
-        RutaSol = c1DAO.read(4);
+        RutaSol = c1DAO.read(2);
+        GuardaVieja = c1DAO.read(3);
+        TroncalSur = c1DAO.read(4);
         
         
         
@@ -89,25 +90,23 @@ public class SIngresoEmpresa extends HttpServlet {
         c_rutaSol = Integer.parseInt(request.getParameter("cantidadRutaDelSol"));
         c_troncalSur = Integer.parseInt(request.getParameter("cantidadTroncalSur"));
         
-        
         // Modelo try, validaciones.. 
         try {
-            EmpresaCliente empresaCliente = new EmpresaCliente(rut_login, direccion_login, comprador_login, nombre_login);
-            Pedido pedido = new Pedido(empresaCliente, opt_retiro, opt_pago, c_ruta68, c_rutaSol, c_troncalSur, c_rutaGuardaVieja);
+            EmpresaCliente empresaCliente = new EmpresaCliente(rut_login, direccion_login, nombre_login);
+            if(compruebaEmpresa.contains(empresaCliente)){
+                Pedido pedido = new Pedido(empresaCliente, opt_retiro, opt_pago, c_ruta68, c_rutaSol, c_troncalSur, c_rutaGuardaVieja,comprador_login);
+                pedido.calculaTotal(Ruta68.getCostoCarretera(), TroncalSur.getCostoCarretera(), RutaSol.getCostoCarretera(), GuardaVieja.getCostoCarretera());
+                pedidoDAO.Insertar(pedido);
+            }else{
+            Pedido pedido = new Pedido(empresaCliente, opt_retiro, opt_pago, c_ruta68, c_rutaSol, c_troncalSur, c_rutaGuardaVieja,comprador_login);
             pedido.calculaTotal(Ruta68.getCostoCarretera(), TroncalSur.getCostoCarretera(), RutaSol.getCostoCarretera(), GuardaVieja.getCostoCarretera());
-            
             empresaDAO.Insert(empresaCliente);
-            
             pedidoDAO.Insertar(pedido);
-            
-            request.getRequestDispatcher("exito.jsp").forward(request, response);
-            
+            }
         } catch (Exception ex) {
-            ex.getMessage();
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
-        
-        
+        request.getRequestDispatcher("exito.jsp").forward(request, response);
         
     }
 

@@ -19,7 +19,7 @@ public class CarreteraDAO implements ICarretera{
     PreparedStatement ps;
     
     private static final String SQL_READALL = "select *from carretera";
-    private static final String SQL_READ = "Select *from carretera where id = ?";
+    private static final String SQL_READ = "Select *from carretera where idCarretera = ?";
     
     
     private static final Conexion con = Conexion.getInstance();

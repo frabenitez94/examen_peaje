@@ -8,7 +8,7 @@ package modelo;
 public class Pedido {
     
     private int id;
-    private EmpresaCliente empresa;
+    private String comprador;
     private int tipoRetiro;
     private int tipoPago;
     private int cRutaSol;
@@ -16,9 +16,10 @@ public class Pedido {
     private int cTroncalSur;
     private int cGuardaVieja;
     private int total;
+    private EmpresaCliente empresa;
 
     public Pedido(EmpresaCliente empresa, int tipoRetiro, int tipoPago
-            ,int cRuta68 ,int cRutaSol ,int cTroncalSur, int cGuardaVieja) {
+            ,int cRuta68 ,int cRutaSol ,int cTroncalSur, int cGuardaVieja, String comprador) {
         setTipoPago(tipoPago);
         setTipoRetiro(tipoRetiro);
         setcRuta68(cRuta68);
@@ -27,6 +28,7 @@ public class Pedido {
         setcGuardaVieja(cGuardaVieja);
         setTotal(total);
         setEmpresa(empresa);
+        setComprador(comprador);
     }
 
     public int getId() {
@@ -101,6 +103,15 @@ public class Pedido {
     public void setTotal(int total) {
         this.total = total;
     }
+
+    public String getComprador() {
+        return comprador;
+    }
+
+    public void setComprador(String comprador) {
+        this.comprador = comprador;
+    }
+    
     
     public void calculaTotal(int valorRuta68, int valorTroncalSur, int valorSol, int valorGuardaVieja){
         int c1,c2,c3,c4;

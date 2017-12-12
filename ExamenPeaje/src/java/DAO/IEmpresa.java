@@ -9,7 +9,7 @@ import modelo.EmpresaCliente;
  */
 public interface IEmpresa {
     
-public int Insert(EmpresaCliente empresa);
+public boolean Insert(EmpresaCliente empresa);
  
 //Traeme todo noma loco wom ! D;  
 public ArrayList<EmpresaCliente> ReadAll();

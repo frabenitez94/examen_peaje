@@ -13,12 +13,7 @@ public class TestPruebas {
     public static void main(String[] args) throws Exception {
         
         
-        EmpresaCliente empresa = new EmpresaCliente(186693477, "vicuña mackena", "Francisco", "Litio SPA");
-        
-        EmpresaDAO empresadao = new EmpresaDAO();
-        
-      empresadao.Insert(empresa);
-        
+    
     }
     
 }

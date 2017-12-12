@@ -12,16 +12,14 @@ package modelo;
 public class EmpresaCliente {
     private int rut;
     private String direccion;
-    private String comprador;
     private String nombreEmpresa;
 
     public EmpresaCliente() {
     }
 
-    public EmpresaCliente(int rut, String direccion, String comprador, String nombreEmpresa) throws Exception {
+    public EmpresaCliente(int rut, String direccion, String nombreEmpresa) throws Exception {
         setRut(rut);
         setDireccion(direccion);
-        setComprador(comprador);
         setNombreEmpresa(nombreEmpresa);
     }
     
@@ -29,28 +27,9 @@ public class EmpresaCliente {
         return nombreEmpresa;
     }
 
-    public void setNombreEmpresa(String nombreEmpresa) throws Exception {
-        if(comprador == null){
-            throw new Exception("no se puede ingresar el dato vacio");
-        }else{
+    public void setNombreEmpresa(String nombreEmpresa){
             this.nombreEmpresa = nombreEmpresa;
-        }
-        
     }
-
-    public String getComprador() {
-        return comprador;
-    }
-
-    public void setComprador(String comprador) throws Exception {
-        if(comprador == null){
-            throw new Exception("no se puede ingresar el dato vacio");
-        }else{
-            this.comprador = comprador;
-        }
-    }
-
-
     public int getRut() {
         
         return rut;
@@ -68,16 +47,9 @@ public class EmpresaCliente {
         return direccion;
     }
 
-    public void setDireccion(String direccion) throws Exception {
-        if(direccion == null){
-            throw new Exception("debes ingresar un dato");
-        }else{
+    public void setDireccion(String direccion){
         this.direccion = direccion;
-        }
     }
 
-    @Override
-    public String toString() {
-        return "EmpresaCliente{" + "rut=" + rut + ", direccion=" + direccion + ", comprador=" + comprador + ", nombreEmpresa=" + nombreEmpresa + '}';
-    }
+    
 }
