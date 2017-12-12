@@ -13,7 +13,7 @@
     
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="http://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
@@ -22,7 +22,11 @@
     </head>
     <body>
         
+        
             <div class="container">
+                
+                <%@include file="index.html" %>
+                
                 <form action="SIngresoEmpresa" name="formularioIngreso">
                     <div class="row">
                         <div class="col-sm">

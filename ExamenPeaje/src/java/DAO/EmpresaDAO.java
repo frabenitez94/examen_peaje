@@ -27,7 +27,7 @@ public class EmpresaDAO implements IEmpresa{
     
     private static final String SQL_INSERT = "INSERT INTO empresa (rut,nombre,direccion) VALUES(?,?,?)";
     private static final String SQL_READ = "select *from empresa where rut = ?";
-    private static final String SQL_READALL = "select *from empresa";
+    private static final String SQL_READALL = "select rut,nombre,direccion from empresa";
     
     
     
@@ -68,7 +68,7 @@ public class EmpresaDAO implements IEmpresa{
             ResultSet res = ps.executeQuery();
             
             while (res.next()) {                
-                empresa.add(new EmpresaCliente(res.getInt(2), res.getString(3), res.getString(4)));
+                empresa.add(new EmpresaCliente(res.getInt(1), res.getString(2), res.getString(3)));
             }
             
         } catch (SQLException ex) {
