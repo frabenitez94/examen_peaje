@@ -9,14 +9,14 @@ import DAO.EmpresaDAO;
 import DAO.PedidoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import modelo.EmpresaCliente;
 import modelo.Pedido;
 
@@ -24,8 +24,8 @@ import modelo.Pedido;
  *
  * @author Francisco Benitez
  */
-@WebServlet(name = "SConsultaMostrar", urlPatterns = {"/SConsultaMostrar"})
-public class SConsultaMostrar extends HttpServlet {
+@WebServlet(name = "SConsultaPedido", urlPatterns = {"/SConsultaPedido"})
+public class SConsultaPedido extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +39,10 @@ public class SConsultaMostrar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-/*        int rut = 0;
-        if(rut > 0){
-            
-            //HttpSession miSession = request.getSession(true);
+        
+            int rut = Integer.parseInt(request.getParameter("rut"));
+        
+          //HttpSession miSession = request.getSession(true);
             EmpresaDAO empresadao = new EmpresaDAO();
             PedidoDAO pedidoDAO = new PedidoDAO();
             ArrayList<EmpresaCliente> listaEmpresa = new ArrayList();
@@ -59,37 +59,10 @@ public class SConsultaMostrar extends HttpServlet {
                request.setAttribute("listaPedido", listaPedido);
 
             } catch (Exception ex) {
-
-            }
-            request.getRequestDispatcher("mostrarPedidos.jsp").forward(request, response);
-
-        }else{
-  */          
-            //HttpSession miSession = request.getSession(true);
-            EmpresaDAO empresadao = new EmpresaDAO();
-            PedidoDAO pedidoDAO = new PedidoDAO();
-            ArrayList<EmpresaCliente> listaEmpresa = new ArrayList();
-            ArrayList<Pedido> listaPedido = new ArrayList();
-
-            try {
-               listaEmpresa.addAll(empresadao.ReadAll());
-               // request.getSession().setAttribute("listaEmpresa", listaEmpresa);
-               // RequestDispatcher r = request.getRequestDispatcher("mostrarPedidos.jsp");
-               //r.forward(request, response);
-
-               request.setAttribute("listaEmpresa", listaEmpresa);
-               request.setAttribute("listaPedido", listaPedido);
-
-            } catch (Exception ex) {
                 request.getSession().setAttribute("mensaje", ex);
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             }
-            request.getRequestDispatcher("mostrarPedidos.jsp").forward(request, response);
-        //rut = Integer.parseInt(request.getParameter("rut"));
-        //listaPedido = pedidoDAO.LeerTodo(rut);
-            
-         //   miSession.setAttribute("listaPedido", listaPedido);
-            
+        request.getRequestDispatcher("mostrarPedidos.jsp").forward(request, response);
         
     }
 

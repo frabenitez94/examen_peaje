@@ -30,6 +30,7 @@ public class Conexion {
         
     }
     public static Conexion getInstance(){
+
         if (instancia == null) {
             instancia = new Conexion();
         }

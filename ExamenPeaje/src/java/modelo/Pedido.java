@@ -9,8 +9,8 @@ public class Pedido {
     
     private int id;
     private String comprador;
-    private int tipoRetiro;
-    private int tipoPago;
+    private String tipoRetiro;
+    private String tipoPago;
     private int cRutaSol;
     private int cRuta68;
     private int cTroncalSur;
@@ -18,7 +18,7 @@ public class Pedido {
     private int total;
     private EmpresaCliente empresa;
 
-    public Pedido(EmpresaCliente empresa, int tipoRetiro, int tipoPago
+    public Pedido(EmpresaCliente empresa, String tipoRetiro, String tipoPago
             ,int cRuta68 ,int cRutaSol ,int cTroncalSur, int cGuardaVieja, String comprador) {
         setTipoPago(tipoPago);
         setTipoRetiro(tipoRetiro);
@@ -28,6 +28,18 @@ public class Pedido {
         setcGuardaVieja(cGuardaVieja);
         setTotal(total);
         setEmpresa(empresa);
+        setComprador(comprador);
+    }
+    public Pedido(int id, String comprador,String tipoRetiro, String tipoPago
+            ,int cRuta68 ,int cRutaSol ,int cTroncalSur, int cGuardaVieja,int total) {
+        setId(id);
+        setTipoPago(tipoPago);
+        setTipoRetiro(tipoRetiro);
+        setcRuta68(cRuta68);
+        setcRutaSol(cRutaSol);
+        setcTroncalSur(cTroncalSur);
+        setcGuardaVieja(cGuardaVieja);
+        setTotal(total);
         setComprador(comprador);
     }
 
@@ -40,19 +52,19 @@ public class Pedido {
     }
 
    
-    public int getTipoRetiro() {
+    public String getTipoRetiro() {
         return tipoRetiro;
     }
 
-    public void setTipoRetiro(int tipoRetiro) {
+    public void setTipoRetiro(String tipoRetiro) {
         this.tipoRetiro = tipoRetiro;
     }
 
-    public int getTipoPago() {
+    public String getTipoPago() {
         return tipoPago;
     }
 
-    public void setTipoPago(int tipoPago) {
+    public void setTipoPago(String tipoPago) {
         this.tipoPago = tipoPago;
     }
 

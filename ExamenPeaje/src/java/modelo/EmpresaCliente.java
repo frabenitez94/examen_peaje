@@ -17,7 +17,7 @@ public class EmpresaCliente {
     public EmpresaCliente() {
     }
 
-    public EmpresaCliente(int rut, String direccion, String nombreEmpresa) throws Exception {
+    public EmpresaCliente(int rut, String nombreEmpresa, String direccion) throws Exception {
         setRut(rut);
         setDireccion(direccion);
         setNombreEmpresa(nombreEmpresa);

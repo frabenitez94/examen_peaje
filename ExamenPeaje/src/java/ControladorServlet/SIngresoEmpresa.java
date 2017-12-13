@@ -20,6 +20,7 @@ import DAO.CarreteraDAO;
 import DAO.EmpresaDAO;
 import DAO.PedidoDAO;
 import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
 import modelo.Voucher;
 
 
@@ -48,13 +49,13 @@ public class SIngresoEmpresa extends HttpServlet {
         String nombre_login;
         String direccion_login;
         String comprador_login;
-        int opt_pago;
-        int opt_retiro;
+        String opt_pago;
+        String opt_retiro;
         int c_ruta68;
         int c_rutaSol;
         int c_rutaGuardaVieja;
         int c_troncalSur;
-        
+        HttpSession miSesion = request.getSession();
         Voucher voucher = new Voucher();
         CarreteraDAO c1DAO = new CarreteraDAO();
         Carretera Ruta68 = new Carretera();
@@ -82,8 +83,8 @@ public class SIngresoEmpresa extends HttpServlet {
         direccion_login = request.getParameter("direccion");
         comprador_login = request.getParameter("comprador");
         
-        opt_pago = Integer.parseInt(request.getParameter("optPago"));
-        opt_retiro = Integer.parseInt(request.getParameter("optRetiro"));
+        opt_pago = request.getParameter("optPago");
+        opt_retiro = request.getParameter("optRetiro");
         
         c_ruta68 = Integer.parseInt(request.getParameter("cantidadRuta68"));
         c_rutaGuardaVieja = Integer.parseInt(request.getParameter("cantidadRutaGuardiaVieja"));
@@ -92,7 +93,7 @@ public class SIngresoEmpresa extends HttpServlet {
         
         // Modelo try, validaciones.. 
         try {
-            EmpresaCliente empresaCliente = new EmpresaCliente(rut_login, direccion_login, nombre_login);
+            EmpresaCliente empresaCliente = new EmpresaCliente(rut_login, nombre_login,direccion_login);
             if(compruebaEmpresa.contains(empresaCliente)){
                 Pedido pedido = new Pedido(empresaCliente, opt_retiro, opt_pago, c_ruta68, c_rutaSol, c_troncalSur, c_rutaGuardaVieja,comprador_login);
                 pedido.calculaTotal(Ruta68.getCostoCarretera(), TroncalSur.getCostoCarretera(), RutaSol.getCostoCarretera(), GuardaVieja.getCostoCarretera());
@@ -102,11 +103,13 @@ public class SIngresoEmpresa extends HttpServlet {
             pedido.calculaTotal(Ruta68.getCostoCarretera(), TroncalSur.getCostoCarretera(), RutaSol.getCostoCarretera(), GuardaVieja.getCostoCarretera());
             empresaDAO.Insert(empresaCliente);
             pedidoDAO.Insertar(pedido);
+            request.setAttribute("pedido", pedido);
             }
         } catch (Exception ex) {
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("exito.jsp").forward(request, response);
+        request.getRequestDispatcher("voucher.jsp").forward(request, response);
+        //response.sendRedirect("voucher.jsp");
         
     }
 
